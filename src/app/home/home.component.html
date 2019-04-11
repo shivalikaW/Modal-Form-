@@ -1,0 +1,53 @@
+<h2 style="text-align: left; padding-left:2% ;"><u>Modal Login Form</u></h2>
+<div style="padding-left:2% ;">
+<button onclick="document.getElementById('id01').style.display='block'"  class="btn btn-success" style="width:auto; ">Login</button>
+</div>
+
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate"  #f="ngForm" >
+    <div class="imgcontainer" >
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="http://calibratedadvisory.com/user/img_avatar2.png" alt="Avatar" class="avatar">
+    </div>
+
+     <div class="form-group" style="text-align: center">
+    <label for="username" >Username :&nbsp; </label>
+      <input type="text" class="form-control" id="username" ngModel
+      name="username"
+      required 
+      #name="ngModel">
+      <span class="help-block" *ngIf="!name.valid && name.touched">Username is required</span>
+    </div>
+
+    <div class="form-group" style="text-align: center">
+      <label for="pwd">Password :&nbsp;</label>
+      <input type="password" class="form-control" id="pwd" ngModel
+       name="pwd" 
+      required
+       minlength="6"
+       #pwd="ngModel">
+       <span class="help-block" *ngIf="!pwd.valid && pwd.touched">Enter valid password minlength is 6</span> 
+      
+      <button type="button" class="btn btn-success" (click)="onSubmit()" [disabled]="!f.valid">Login</button>
+    </div>
+    
+
+    <div class="container" style="background-color:#f1f1f1">
+      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn btn btn-danger">Cancel</button>
+      <span class="psw">Forgot <a (click)="onChange()">password?</a></span>
+    </div>
+
+  </form>
+
+</div>
+
+<div class="row" *ngIf="submitted">
+  <div class="col-xs-12">
+    <h3>Your Data</h3>
+    <p>Username: {{this.username}}</p>
+    <p>Password: {{this.pwwd}}</p>
+    
+  </div>
+</div>
